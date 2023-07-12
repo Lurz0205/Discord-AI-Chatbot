@@ -25,9 +25,6 @@ load_dotenv()
 # Set up the Discord bot
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="/", intents=intents, heartbeat_timeout=60)
-keep_alive()
-token = os.environ.get("DISCORD_BOT_SECRET")
-client.run(token)
 TOKEN = os.getenv('DISCORD_TOKEN')  # Loads Discord bot token from env
 
 if TOKEN is None:
@@ -412,3 +409,6 @@ if detect_replit():
     run_flask_in_thread()
 if __name__ == "__main__":
     bot.run(TOKEN)
+keep_alive()
+token = os.environ.get("DISCORD_BOT_SECRET")
+client.run(token)
