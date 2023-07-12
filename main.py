@@ -11,6 +11,7 @@ import string
 from discord import Embed, app_commands
 from discord.ext import commands
 from dotenv import load_dotenv
+from keep_alive import keep_alive
 
 from utilities.ai_utils import generate_response, generate_image, search, poly_image_gen, generate_gpt4_response#, dall_e_gen
 from utilities.response_util import split_response, translate_to_en, get_random_prompt
@@ -24,6 +25,9 @@ load_dotenv()
 # Set up the Discord bot
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="/", intents=intents, heartbeat_timeout=60)
+keep_alive()
+token = os.environ.get("DISCORD_BOT_SECRET")
+client.run(token)
 TOKEN = os.getenv('DISCORD_TOKEN')  # Loads Discord bot token from env
 
 if TOKEN is None:
